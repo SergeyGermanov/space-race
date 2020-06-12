@@ -1,50 +1,51 @@
 let leftShip;
-let rigthShip;
+let rightShip;
 
 function setup() {
     createCanvas(400, 400);
     leftShip = new Ship(width * 0.33);
-    rigthShip = new Ship(width * 0.66);
+    rightShip = new Ship(width * 0.66);
 }
 
 function draw() {
     background(0);
 
     leftShip.update();
-    rigthShip.update();
+    rightShip.update();
 
     leftShip.display();
-    rigthShip.display();
+    rightShip.display();
 }
 
+
 function keyPressed() {
-    if (keyCode === UP_ARROW) {
-        rigthShip.isUp = true;
-        rigthShip.isDown = false;
-    } else if (keyCode === DOWN_ARROW) {
-        rigthShip.isDown = true;
-        rigthShip.isUp = false;
+    if (keyCode == UP_ARROW) {
+        rightShip.isUp = true;
+        rightShip.isDown = false;
+    } else if (keyCode == DOWN_ARROW) {
+        rightShip.isDown = true;
+        rightShip.isUp = false;
     }
 
-    if (keyCode === 87) {
+
+    if (keyCode == 87) {
         leftShip.isUp = true;
-        leftShip.isDown === false;
-    } else if (keyCode === 83) {
-        leftShip.isDown === true;
+        leftShip.isDown = false;
+    } else if (keyCode == 83) {
+        leftShip.isDown = true;
         leftShip.isUp = false;
     }
 }
-
 function keyReleased() {
-    if (keyCode === UP_ARROW) {
-        rigthShip.isUp = false;
-    } else if (keyCode === DOWN_ARROW) {
-        rigthShip.isDown === false;
+    if (keyCode == UP_ARROW) {
+        rightShip.isUp = false;
+    } else if (keyCode == DOWN_ARROW) {
+        rightShip.isDown = false;
     }
 
-    if (keyCode === 87) {
-        leftShip.isUp === false;
-    } else if (keyCode === 83) {
+    if (keyCode == 87) {
+        leftShip.isUp = false;
+    } else if (keyCode == 83) {
         leftShip.isDown = false;
     }
 }

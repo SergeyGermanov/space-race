@@ -1,17 +1,26 @@
 let leftShip;
 let rightShip;
 let allDebris = [];
+let leftScore;
+let rightScore;
+let spaceshipImage;
 
 const NUM_DEBRIS = 30;
 
 function setup() {
     createCanvas(400, 400);
-    leftShip = new Ship(width * 0.33);
-    rightShip = new Ship(width * 0.66);
+
+    spaceshipImage = loadImage('spaceship.png');
+
+    leftShip = new Ship(width * 0.33, spaceshipImage);
+    rightShip = new Ship(width * 0.66, spaceshipImage);
 
     for (let i = 0; i < NUM_DEBRIS; i++) {
         allDebris.push(new Debris());
     }
+
+    leftScore = new Score(width * 0.33 - 40);
+    rightScore = new Score(width * 0.66 + 40);
 }
 
 function draw() {
@@ -24,6 +33,9 @@ function draw() {
     rightShip.display();
 
     updateDebrisAndCheckCollisions();
+
+    leftScore.display(leftShip.score);
+    rightScore.display(rightShip.score);
 }
 
 function updateDebrisAndCheckCollisions() {
